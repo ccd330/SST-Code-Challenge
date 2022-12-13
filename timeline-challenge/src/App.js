@@ -3,10 +3,8 @@ import EventForm from './Form';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div>
         <EventForm></EventForm>
-      </header>
     </div>
   );
 }
