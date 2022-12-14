@@ -32,42 +32,32 @@ function NewEventForm() {
     }
     function checkArray() {
         console.log("Object stored in array", inputArr)
-
     }
 
     function transformString() {
         let stringArr = inputArr;
-        console.log(stringArr)
-
+        //convert array of objects to array of arrays
         var array = stringArr.map((obj) => {
             //startTime, endTime
             return Object.keys(obj).map((key) =>{
                 return obj[key]
             })
-        })
-        
+        });
+        //convert the strings inside the arrays to integers for comparison
         for (var i in array) {
             array[i][0] = +array[i][0];
             array[i][1] = +array[i][1];
-        }
+        };
+
+        array.sort(function(a,b) {
+            return a[0]-b[0];
+        });
+        
 
         console.log("Arrays stored in array", array);
 
-        // let times = array;
-
-        // times.forEach(function(row){
-        //     row.forEach(function(col){
-        //         console.log(parseInt(col));
-        //     })
-        // })
-        
-        //need to fix, only storing part of array
-        // let numArr = array.map(function(str) {
-        //     return parseInt(str);
-        // })
-
-        // console.log("look! numbers!", numArr)
     }
+
     return (
         <div>
             <h2>Event Input</h2>
