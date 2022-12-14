@@ -1,10 +1,10 @@
 import './App.css';
-import EventForm from './Form';
+import NewEventForm from './NewEventForm';
 
 function App() {
   return (
     <div>
-        <EventForm></EventForm>
+        <NewEventForm></NewEventForm>
     </div>
   );
 }
