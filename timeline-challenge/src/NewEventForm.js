@@ -39,22 +39,35 @@ function NewEventForm() {
         let stringArr = inputArr;
         console.log(stringArr)
 
-        const array = stringArr.map((obj) => {
+        var array = stringArr.map((obj) => {
             //startTime, endTime
             return Object.keys(obj).map((key) =>{
                 return obj[key]
             })
         })
+        
+        for (var i in array) {
+            array[i][0] = +array[i][0];
+            array[i][1] = +array[i][1];
+        }
 
-        console.log("Arrays stored in array", array)
+        console.log("Arrays stored in array", array);
+
+        // let times = array;
+
+        // times.forEach(function(row){
+        //     row.forEach(function(col){
+        //         console.log(parseInt(col));
+        //     })
+        // })
+        
         //need to fix, only storing part of array
-        let numArr = array.map(function(str) {
-            return parseInt(str);
-        })
+        // let numArr = array.map(function(str) {
+        //     return parseInt(str);
+        // })
 
-        console.log("look! nuumbers!", numArr)
+        // console.log("look! numbers!", numArr)
     }
-
     return (
         <div>
             <h2>Event Input</h2>
@@ -77,12 +90,12 @@ function NewEventForm() {
                 transformString();
             }}>Check Array In Console</button>
 
-            <h2>Event Output</h2>
+            <h2>Event Collection</h2>
 
             <table border={1} width="30%" cellPadding={10}>
                 <tbody>
                     <tr>
-                        <td>Level</td>
+                        <td>Event No.</td>
                         <th>Start Time </th>
                         <th>End Time</th>
                         <th>Options</th>
@@ -104,6 +117,7 @@ function NewEventForm() {
                     }
                 </tbody>
             </table>
+            <h2>Event Timeline</h2>
         </div>
     );
 }
