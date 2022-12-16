@@ -1,12 +1,22 @@
-import './App.css';
-import NewEventForm from './NewEventForm';
+import React, {useState} from 'react';
+import Timeline from './timeline';
+import EventForm from './form';
 
-function App() {
+const App = () => {
+  const [events, setEvents] = useState([]);
+
+  const addEvent = (event) => {
+    setEvents([...events, event]);
+  };
+
   return (
-    <div>
-        <NewEventForm></NewEventForm>
+    <div className="app">
+      <EventForm onSubmit={addEvent} />
+      <Timeline events={events} />
     </div>
   );
-}
+};
 
 export default App;
+
+

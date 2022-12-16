@@ -1,115 +1,140 @@
-import React,{ useState } from 'react'
+// import React,{ useState } from 'react'
 
-function NewEventForm() {
-    const [inputArr, setInputArr] = useState([])
-    const [inputData, setInputData] = useState({startTime: "", endTime: ""})
+// function NewEventForm() {
+//     const [inputArr, setInputArr] = useState([])
+//     const [inputData, setInputData] = useState({startTime: "", endTime: ""})
 
-    function handleChange(e) {
-        setInputData({
-            ...inputData,
-            [e.target.name]: e.target.value
-        })
+//     function handleChange(e) {
+//         setInputData({
+//             ...inputData,
+//             [e.target.name]: e.target.value
+//         })
 
-    }
+//     }
 
-    let {startTime, endTime} = inputData;
-    function addEvent() {
-        setInputArr([
-            ...inputArr, {
-                startTime,
-                endTime
-            }
-        ])
+//     let {startTime, endTime} = inputData;
+//     function addEvent() {
+//         setInputArr([
+//             ...inputArr, {
+//                 startTime,
+//                 endTime
+//             }
+//         ])
 
-        console.log(inputData)
-        setInputData({ startTime: "", endTime: "" })
+//         console.log(inputData)
+//         setInputData({ startTime: "", endTime: "" })
 
-    }
-    let deleteHandle =(i)=>{
-        let newDataArr=[...inputArr]
-        newDataArr.splice(i,1)
-        setInputArr(newDataArr)
-    }
-    function checkArray() {
-        console.log("Object stored in array", inputArr)
-    }
+//     }
+//     let deleteHandle =(i)=>{
+//         let newDataArr=[...inputArr]
+//         newDataArr.splice(i,1)
+//         setInputArr(newDataArr)
+//     }
+//     function checkArray() {
+//         console.log("Object stored in array", inputArr)
+//     }
 
-    function transformString() {
-        let stringArr = inputArr;
-        //convert array of objects to array of arrays
-        var array = stringArr.map((obj) => {
-            //startTime, endTime
-            return Object.keys(obj).map((key) =>{
-                return obj[key]
-            })
-        });
-        //convert the strings inside the arrays to integers for comparison
-        for (var i in array) {
-            array[i][0] = +array[i][0];
-            array[i][1] = +array[i][1];
-        };
+//     function transformString() {
+//         let stringArr = inputArr;
+//         //convert array of objects to array of arrays
+//         var array = stringArr.map((obj) => {
+//             //startTime, endTime
+//             return Object.keys(obj).map((key) =>{
+//                 return obj[key]
+//             })
+//         });
+//         //convert the strings inside the arrays to integers for comparison
+//         for (var i in array) {
+//             array[i][0] = +array[i][0];
+//             array[i][1] = +array[i][1];
+//         };
 
-        array.sort(function(a,b) {
-            return a[0]-b[0];
-        });
+//         array.sort(function(a,b) {
+//             console.log(a,b);
+//             //given [[5,10],[4,9]], a is [4,9] and b is [5,10]
+//             return a[0]-b[0];
+//         });
+
+//         //add first array in array to level 1
+
+//         //loop through arrays in array to compare
+//         //ex: [[0,5],[2,6],[]7,10]
+//         // function intervals(array) {
+//         //     for (let i = 1; i < array.length; i++) {
+//         //         let count = 0;
+//         //         let previous = 0;
+//         //         let current = array[i];
+//         //         if(current[0] < array[prev][1]){
+//         //             count++;
+//         //         } else {
+//         //             previous = 1;
+//         //         }
+//         //     }
+//         //     return count;
+//         // }
+        
         
 
-        console.log("Arrays stored in array", array);
+//         console.log("Arrays stored in array", array);
 
-    }
+//     }
 
-    return (
-        <div>
-            <h2>Event Input</h2>
-            <input
-                type="text"
-                name='startTime'
-                value={inputData.startTime}
-                onChange={handleChange}
-                placeholder="Enter Start Time"/>
-            <input
-                type="text"
-                name='endTime'
-                value={inputData.endTime}
-                onChange={handleChange}
-                placeholder="Enter End Time"/>
+//     // function addLevel() {
 
-            <button onClick={addEvent}>Add Event</button>
-            <button onClick={() => {
-                checkArray();
-                transformString();
-            }}>Check Array In Console</button>
+//     // }
 
-            <h2>Event Collection</h2>
+//     return (
+//         <div>
+//             <h2>Event Input</h2>
+//             <input
+//                 type="text"
+//                 name='startTime'
+//                 value={inputData.startTime}
+//                 onChange={handleChange}
+//                 placeholder="Enter Start Time"/>
+//             <input
+//                 type="text"
+//                 name='endTime'
+//                 value={inputData.endTime}
+//                 onChange={handleChange}
+//                 placeholder="Enter End Time"/>
 
-            <table border={1} width="30%" cellPadding={10}>
-                <tbody>
-                    <tr>
-                        <td>Event No.</td>
-                        <th>Start Time </th>
-                        <th>End Time</th>
-                        <th>Options</th>
-                    </tr>
-                    {inputArr.length < 1 ?
-                        <tr>
-                            <td colSpan={4}>No data entered yet</td>
-                        </tr>:
-                        inputArr.map((info, ind) => {
-                            return (
-                                <tr key={ind}>
-                                    <td>{ind + 1}</td>
-                                    <td>{info.startTime}</td>
-                                    <td>{info.endTime}</td>
-                                    <td><button onClick={()=>deleteHandle(ind)}>Delete</button></td>
-                                </tr>
-                            )
-                        })
-                    }
-                </tbody>
-            </table>
-            <h2>Event Timeline</h2>
-        </div>
-    );
-}
+//             <button onClick={addEvent}>Add Event</button>
+//             <button onClick={() => {
+//                 checkArray();
+//                 transformString();
+//             }}>Check Array In Console</button>
 
-export default NewEventForm;
+//             <h2>Event Collection</h2>
+
+//             <table border={1} width="30%" cellPadding={10}>
+//                 <tbody>
+//                     <tr>
+//                         <td>Event No.</td>
+//                         <th>Start Time </th>
+//                         <th>End Time</th>
+//                         <th>Options</th>
+//                     </tr>
+//                     {inputArr.length < 1 ?
+//                         <tr>
+//                             <td colSpan={4}>No data entered yet</td>
+//                         </tr>:
+//                         inputArr.map((info, ind) => {
+//                             return (
+//                                 <tr key={ind}>
+//                                     <td>{ind + 1}</td>
+//                                     <td>{info.startTime}</td>
+//                                     <td>{info.endTime}</td>
+//                                     <td><button onClick={()=>deleteHandle(ind)}>Delete</button></td>
+//                                 </tr>
+//                             )
+//                         })
+//                     }
+//                 </tbody>
+//             </table>
+//             <h2>Event Timeline</h2>
+//         </div>
+//     );
+// }
+
+// export default NewEventForm;
