@@ -1,24 +1,5 @@
-//import React, {useState} from 'react';
-// import Timeline from './timeline';
-// import EventForm from './form';
-
-// const App = () => {
-//   const [events, setEvents] = useState([]);
-
-//   const addEvent = (event) => {
-//     setEvents([...events, event]);
-//   };
-
-//   return (
-//     <div className="app">
-//       <EventForm onSubmit={addEvent} />
-//       <Timeline events={events} />
-//     </div>
-//   );
-// };
-
-// export default App;
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Timeline from './Timeline';
 
 const App = () => {
